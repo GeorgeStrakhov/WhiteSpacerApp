@@ -85,7 +85,7 @@ let utils = {
 
     randomizeTitles(cardData){
         $('.ws-card').each(function(){
-            $carousel = $(this).find('.main-carousel');
+            let $carousel = $(this).find('.main-carousel');
             let $title = $(this).find('h2');
             let colIndex = $(this).data('col-index');
             let newTitle = utils.randomElement(cardData.items[colIndex]);
