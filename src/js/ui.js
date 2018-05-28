@@ -19,6 +19,14 @@ let ui = {
         $('#button-login').removeClass('is-loading');
     },
 
+    showInfo(){
+        $('#info').addClass('is-active');
+    },
+
+    hideInfo(){
+        $('#info').removeClass('is-active');
+    },
+
     showModal(){
         $('#title-overlay').addClass('is-active');
     },

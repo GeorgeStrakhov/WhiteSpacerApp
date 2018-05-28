@@ -87,14 +87,21 @@ $( document ).ready(function() {
             $('#preload').hide();
 
             // disable login for testing
-            // 
-            // loadDataSheet(appData.credentials.norway.sheet_id, appData.googleSheetApiKey, cardData)
+            //
+            loadDataSheet(appData.credentials.norway2018.sheet_id, appData.googleSheetApiKey, cardData)
         },
         error: function(xhr, status, error) {
             var err = eval("(" + xhr.responseText + ")");
             alert(err.Message);
         }
     })
+
+    $('.icon-info').click(function(){
+        ui.showInfo();
+    });
+
+    $('#info .modal-close').click(ui.hideInfo);
+    $('#info .modal-background').click(ui.hideInfo);
 
     function loadDataSheet(sheetId, apiKey, cardData){
         let sheetUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetId + '/values/Sheet1?key=' + apiKey;
