@@ -156,7 +156,8 @@ $( document ).ready(function() {
     function initModal(cardData){
         let $target = $('#title-overlay .options-container');
 
-        for(let title of cardData.titles){
+        for(let i = 0; i < cardData.titles.length; i++){
+            let title = cardData.titles[i];
             let $title = $('<div class="selection-box"><h2 class="title-selector">' + title + '</h2></div>');
             // let $title = $('<h2 class="title-selector">' + title + '</h2>');
 
@@ -203,7 +204,8 @@ $( document ).ready(function() {
         $card.append($title);
 
         let $container = $('<div class="main-carousel"></div>');
-        for (title of cardData.items[colIndex]){
+        for (let i=0; i < cardData.items[colIndex].length; i++){
+            let title = cardData.items[colIndex][i];
             let $slide = $('<div class="carousel-cell"></div>');
             let $item = $('<h2>' + title + '</h2>');
             utils.textResize($item);
