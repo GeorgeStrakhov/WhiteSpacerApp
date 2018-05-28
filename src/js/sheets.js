@@ -34,7 +34,7 @@ let sheets = {
             let username = item[usernameIndex].toLowerCase();
             let result = {};
             if (username){
-                for( key of results.values[0] ){
+                for( let key of results.values[0] ){
                     result[key] = item[keys.indexOf(key)];
                 }
                 output[username] = result;

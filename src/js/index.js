@@ -48,7 +48,6 @@ let appData = {
 }
 
 $( document ).ready(function() {
-    console.log('ready');
 
     ui.showLoader();
     ui.showLogin();
@@ -81,8 +80,8 @@ $( document ).ready(function() {
         dataType:"jsonp",
         success: function(results){
             appData.credentials = sheets.parseMaster(results);
-            console.log(results);
-            console.log(appData.credentials);
+            // console.log(results);
+            // console.log(appData.credentials);
             ui.hideLoader();
             $('#preload').hide();
 
