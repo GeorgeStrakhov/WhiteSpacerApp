@@ -1,0 +1,67 @@
+/* prevent vertical scroll bar glitch */
+html { overflow-y: scroll; }
+
+.carousel {
+    background: #EEE;
+}
+
+.main-carousel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    // align-items: center;
+}
+.carousel-cell {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    height: 100px;
+    padding: 0 30px;
+    // border: 1px solid magenta;
+    // text-align: center;
+
+    h2 {
+        padding: 0 20px;
+        width: 100%;
+        font-size: 2em;
+        line-height: 1em;
+        font-weight: 800;
+    }
+    h2.small-title{
+        font-size: 1.5em;
+        line-height: 1em;
+        color: white;
+    }
+
+    h2.large-title{
+        font-size: 2.6em;
+        color: white;
+        line-height: 1em;
+
+    }
+}
+
+
+/* no circle */
+.flickity-button {
+  background: transparent;
+}
+/* big previous & next buttons */
+.flickity-prev-next-button {
+}
+/* icon color */
+.flickity-button-icon {
+  fill: white;
+}
+
+.flickity-button:hover {
+  // background-color: rgba(0,0,0,0.5);
+  background: transparent;
+}

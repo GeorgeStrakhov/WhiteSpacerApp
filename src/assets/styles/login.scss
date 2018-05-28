@@ -1,0 +1,53 @@
+#login{
+
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    z-index: 999;
+    background-color: white;
+    visibility: hideen;
+
+    .hero.is-success {
+        background: #F2F6FA;
+    }
+    .hero .nav, .hero.is-success .nav {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .box {
+        margin-top: 5rem;
+    }
+    .avatar {
+        margin-top: -70px;
+        padding-bottom: 20px;
+    }
+    .avatar img {
+        padding: 5px;
+        background: #fff;
+        border-radius: 50%;
+        -webkit-box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+        box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+        margin: 0 auto;
+    }
+    input {
+        font-weight: 300;
+    }
+    p {
+        font-weight: 700;
+    }
+    p.subtitle {
+        padding-top: 1rem;
+    }
+    .password-warning {
+        display: none;
+    }
+    .prompt {
+        height: 2em;
+    }
+}
