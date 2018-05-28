@@ -22,7 +22,7 @@ module.exports = merge(webpackConfig, {
 
     output: {
         path: path.join(__dirname, '/'),
-        filename: '[name].js'
+        filename: '[name].[chunkhash].js'
     },
 
 
