@@ -39,10 +39,9 @@ module.exports = {
             // BABEL
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
                 exclude: /(node_modules)/,
-                options: {
-                    compact: true
+                use: {
+                  loader: "babel-loader"
                 }
             },
 
