@@ -84,6 +84,7 @@ $( document ).ready(function() {
             console.log(results);
             console.log(appData.credentials);
             ui.hideLoader();
+            $('#preload').hide();
 
             // disable login for testing
             loadDataSheet(appData.credentials.norway.sheet_id, appData.googleSheetApiKey, cardData)

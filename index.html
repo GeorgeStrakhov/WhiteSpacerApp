@@ -7,8 +7,62 @@
     <style media="screen">
 
     </style>
+    <style>
+        #preload {
+            position: fixed; /* Stay in place */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: white; /* Fallback color */
+            z-index: 999999;
+            display: flex;
+            flex-direction: columns;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lds-ring {
+              display: flex;
+              position: relative;
+              width: 100px;
+              height: 100px;
+            }
+            .lds-ring div {
+              box-sizing: border-box;
+              display: block;
+              position: absolute;
+              width: 100px;
+              height: 100px;
+              border: 6px solid #333;
+              border-radius: 50%;
+              animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+              border-color: #333 transparent transparent transparent;
+            }
+            .lds-ring div:nth-child(1) {
+              animation-delay: -0.45s;
+            }
+            .lds-ring div:nth-child(2) {
+              animation-delay: -0.3s;
+            }
+            .lds-ring div:nth-child(3) {
+              animation-delay: -0.15s;
+            }
+            @keyframes lds-ring {
+              0% {
+                transform: rotate(0deg);
+              }
+              100% {
+                transform: rotate(360deg);
+              }
+            }
+    </style>
 </head>
 <body>
+    <div id="preload">
+        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
     <div id = "login">
         <div class="container has-text-centered">
             <div class="column is-4 is-offset-4">
@@ -53,5 +107,5 @@
         <button class="modal-close is-large close-icon" aria-label="close"></button>
         <!-- <div class="close-icon"></div> -->
     </div>
-<script type="text/javascript" src="bundle.5e1551086c81547f1f3e.js"></script></body>
+<script type="text/javascript" src="bundle.b147ab096fd359fd73cf.js"></script></body>
 </html>
