@@ -13,6 +13,8 @@ html {
 body {
     margin: 0;
     padding: 0;
+    /* Disables pull-to-refresh but allows overscroll glow effects. */
+    overscroll-behavior-y: contain;
 }
 #content-parent {
     padding: 0px;
@@ -135,6 +137,7 @@ h2 {
     background-image: url("../images/logo.png");
     background-size: cover;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .icon-logo:hover {
