@@ -25,17 +25,26 @@ html { overflow-y: scroll; }
         font-size: 2em;
         line-height: 1em;
         font-weight: 800;
+        @media screen and (max-width: 320px) {
+            font-size: 1.4em;
+        }
     }
     h2.small-title{
         font-size: 1.5em;
         line-height: 1em;
         color: white;
+        @media screen and (max-width: 320px) {
+            font-size: 1.1em;
+        }
     }
 
     h2.large-title{
         font-size: 2.6em;
         color: white;
         line-height: 1em;
+        @media screen and (max-width: 320px) {
+            font-size: 2em;
+        }
 
     }
 }

@@ -88,7 +88,7 @@ $( document ).ready(function() {
 
             // disable login for testing
             //
-            loadDataSheet(appData.credentials.norway2018.sheet_id, appData.googleSheetApiKey, cardData)
+            // loadDataSheet(appData.credentials.norway2018.sheet_id, appData.googleSheetApiKey, cardData)
         },
         error: function(xhr, status, error) {
             var err = eval("(" + xhr.responseText + ")");

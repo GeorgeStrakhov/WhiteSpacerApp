@@ -101,13 +101,6 @@ body {
         display: flex;
         flex-direction: column;
     }
-    .color-icon {
-        display: flex;
-        flex-direction: column;
-        width: 20px;
-        height: 20px;
-        background-color: magenta;
-    }
 }
 
 h2 {
@@ -117,8 +110,6 @@ h2 {
     line-height: 0.85em;
     user-select: none;
 }
-
-
 
 
 .close-icon {
@@ -172,6 +163,7 @@ h2 {
             font-size: 2em;
             font-weight: 800;
             letter-spacing: -0.05em;
+            line-height: 1em;
         }
 
         .info-title {
@@ -186,10 +178,7 @@ h2 {
             letter-spacing: -0.04em;
             font-weight: 800;
             margin-top: -0.4em;
-            margin-bottom: 2em;
-        }
-        .spacer-bottom{
-            height: 100px;
+            margin-bottom: 1.6em;
         }
     }
 }
