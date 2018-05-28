@@ -19,10 +19,3 @@ https://docs.google.com/spreadsheets/d/1hTI-U494zBBubcBcSCw66cnHz81p0zz__DfQ0oOs
 * First row contains titles
 
 No other requirements
-
-
-
-
-### Using /dist folder as source for gh-pages branch
-Run this command from console to publish /dist folder to gh-pages branch:
-`git subtree push --prefix dist origin gh-pages`
