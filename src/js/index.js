@@ -1,8 +1,7 @@
 /**
  * Application entry point
  */
-// import 'bulma/css/bulma.css'
-// import 'bulma/bulma.sass';
+
 import 'styles/index.scss';
 import 'flickity/css/flickity.css';
 import 'styles/flickity.scss';
@@ -58,9 +57,10 @@ $( document ).ready(function() {
     $('#button-login').click(function(e){
         e.preventDefault();
         let username = $('#whitespacer-username').val();
+        username = username.toLowerCase();
         let password = $('#whitespacer-password').val();
         let credential = appData.credentials[username];
-        if ( credential && credential.password == password){
+        if ( credential && credential.password.toLowerCase() == password.toLowerCase()){
             $('.password-warning').hide();
             $(this).addClass('is-loading');
             loadDataSheet(credential.sheet_id, appData.googleSheetApiKey, cardData);
@@ -154,7 +154,7 @@ $( document ).ready(function() {
 
 
             $title.click(function(){
-                let $oldCard = $('.card[data-card-id="' + appData.selectedCard + '"]');
+                let $oldCard = $('.ws-card[data-card-id="' + appData.selectedCard + '"]');
                 let $newCard = generateCard($(this).find('.title-selector').html(), appData.selectedCard);
                 $oldCard.find('.main-carousel').flickity('destroy');
                 $oldCard.replaceWith($newCard);
@@ -185,7 +185,7 @@ $( document ).ready(function() {
     function generateCard(title, cardId){
         let colIndex = cardData.titles.indexOf(title);
         let [bgColor, fgColor] = cardData.colors[colIndex];
-        let $card = $('<div class="card"></div>');
+        let $card = $('<div class="ws-card"></div>');
         $card.css('background-color', bgColor);
         $card.css('color', fgColor);
         $card.attr('data-card-id', cardId);
@@ -206,7 +206,7 @@ $( document ).ready(function() {
 
 
         $title.click(function(){
-            appData.selectedCard = $(this).parent('.card').data('card-id');
+            appData.selectedCard = $(this).parent('.ws-card').data('card-id');
             ui.showModal();
         });
 

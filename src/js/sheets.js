@@ -31,7 +31,7 @@ let sheets = {
         // for each row except first
         for (let y = 1; y < results.values.length; y++) {
             let item = results.values[y];
-            let username = item[usernameIndex];
+            let username = item[usernameIndex].toLowerCase();
             let result = {};
             if (username){
                 for( key of results.values[0] ){

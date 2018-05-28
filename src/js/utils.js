@@ -44,7 +44,7 @@ let utils = {
     },
 
     itemClickBehaviour($item, cardData){
-        let $parent = $item.parent('.card');
+        let $parent = $item.parent('.ws-card');
         let newItem = utils.randomItem($parent, cardData);
 
         // reuturn if no item can be added (no unused items)
@@ -84,7 +84,7 @@ let utils = {
     },
 
     randomizeTitles(cardData){
-        $('.card').each(function(){
+        $('.ws-card').each(function(){
             $carousel = $(this).find('.main-carousel');
             let $title = $(this).find('h2');
             let colIndex = $(this).data('col-index');

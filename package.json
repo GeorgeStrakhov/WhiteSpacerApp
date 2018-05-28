@@ -1,20 +1,13 @@
 {
-  "name": "webpack-boilerplate",
-  "version": "4.0.0",
-  "description": "Plain webpack 4 Boilerplate with Babel, SASS and lodash on board",
-  "author": "Christoph von Gellhorn",
-  "license": "MIT",
-  "homepage": "https://github.com/cvgellhorn/webpack-boilerplate",
+  "name": "WhiteSpacer",
+  "version": "1.0.0",
+  "description": "",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --progress --mode development --config webpack.config.dev.js",
     "build": "webpack -p --progress --mode production --config webpack.config.build.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://cvgellhorn@github.com/cvgellhorn/webpack-boilerplate.git"
-  },
   "dependencies": {
-    "npm": "^6.0.1"
+    "npm": "^6.1.0"
   },
   "devDependencies": {
     "babel-core": "6.26.3",
@@ -31,7 +24,6 @@
     "jquery-bridget": "^2.0.1",
     "node-sass": "4.9.0",
     "sass-loader": "7.0.1",
-    "slick-carousel": "^1.8.1",
     "style-loader": "0.21.0",
     "url-loader": "1.0.1",
     "webpack": "4.8.3",

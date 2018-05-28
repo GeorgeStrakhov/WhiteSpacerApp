@@ -1,52 +1,53 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <title></title>
-    <style media="screen">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title></title>
+        <style media="screen">
 
-    </style>
-</head>
-<body>
-    <div id = "login">
-        <div class="container has-text-centered">
-            <div class="column is-4 is-offset-4">
-                <div class="">
-                    <figure class="avatar">
-                        <img class="image is-128x128" src="src/assets/images/logo.png">
-                    </figure>
-                    <form>
-                        <div class="field">
-                            <div class="control">
-                                <input id = "whitespacer-username" class="input is-large" placeholder="workshop name" autofocus="" autocomplete="off">
+        </style>
+    </head>
+    <body>
+        <div id = "login">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <div class="">
+                        <figure class="avatar">
+                            <img class="image is-128x128" src="src/assets/images/logo.png">
+                        </figure>
+                        <form>
+                            <div class="field">
+                                <div class="control">
+                                    <input id = "whitespacer-username" class="input is-large" placeholder="workshop name" autofocus="" autocomplete="off">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="field">
-                            <div class="control">
-                                <input id = "whitespacer-password" class="input is-large" type="password" placeholder="password" autocomplete="off">
+                            <div class="field">
+                                <div class="control">
+                                    <input id = "whitespacer-password" class="input is-large" type="password" placeholder="password" autocomplete="off">
+                                </div>
                             </div>
-                        </div>
-                        <button id = "button-login" class="button is-block is-large is-fullwidth is-dark">Login</button>
-                    </form>
+                            <button id = "button-login" class="button is-block is-large is-fullwidth is-dark">Login</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="container has-text-centered prompt">
+                    <p class="password-warning has-text-danger">check login & password</p>
                 </div>
             </div>
-            <div class="container has-text-centered prompt">
-                <p class="password-warning has-text-danger">check login & password</p>
+        </div>
+        <div id = "content">
+            <div class="navbar"><div class="icon"></div><div class="icon-logo trigger-randomize"></div><div class="icon"></div></div>
+        </div>
+
+        <div id = "title-overlay" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content options-container">
+                <!-- Any other Bulma elements you want -->
             </div>
+            <button class="modal-close is-large close-icon" aria-label="close"></button>
+            <!-- <div class="close-icon"></div> -->
         </div>
-    </div>
-    <div id = "content">
-        <div class="navbar"><div class="icon"></div><div class="icon-logo trigger-randomize"></div><div class="icon"></div></div>
-    </div>
-    <div id = "title-overlay" class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-content options-container">
-            <!-- Any other Bulma elements you want -->
-        </div>
-        <button class="modal-close is-large close-icon" aria-label="close"></button>
-        <!-- <div class="close-icon"></div> -->
-    </div>
-</body>
+    </body>
 </html>
