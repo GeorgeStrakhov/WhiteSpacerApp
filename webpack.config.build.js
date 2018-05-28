@@ -25,7 +25,6 @@ module.exports = merge(webpackConfig, {
         filename: '[name].[chunkhash].js'
     },
 
-
     // plugins: [
     //     new CleanWebpackPlugin(['/'])
     // ]
