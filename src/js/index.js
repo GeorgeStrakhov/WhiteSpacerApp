@@ -86,7 +86,7 @@ $( document ).ready(function() {
             ui.hideLoader();
 
             // disable login for testing
-            // loadDataSheet(appData.credentials.norway.sheet_id, appData.googleSheetApiKey, cardData)
+            loadDataSheet(appData.credentials.norway.sheet_id, appData.googleSheetApiKey, cardData)
         },
         error: function(xhr, status, error) {
             var err = eval("(" + xhr.responseText + ")");
