@@ -109,9 +109,9 @@ $( document ).ready(function() {
             dataType:"jsonp",
             success:function(results) {
                 ui.hideLogin();
-                console.log(results);
+                // console.log(results);
                 cardData = sheets.processResults(results, cardData)
-                console.log(cardData);
+                // console.log(cardData);
                 initCards(cardData);
                 initModal(cardData);
                 initNavbar(cardData);
