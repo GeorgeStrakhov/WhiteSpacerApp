@@ -1,26 +1,25 @@
 /**
  * Application entry point
  */
-
-import 'styles/index.scss';
 import 'flickity/css/flickity.css';
-import 'styles/flickity.scss';
-import 'styles/login.scss';
+import 'styles/index.scss';
 
 
 let $ = require('jquery');
 let jQueryBridget = require('jquery-bridget');
 let Flickity = require('flickity');
 
-let sheets = require('js/sheets');
-let utils = require('js/utils');
-let ui = require('js/ui');
-
 // make Flickity a jQuery plugin
 Flickity.setJQuery( $ );
 jQueryBridget( 'flickity', Flickity, $ );
 
-// App setup
+// pull in components
+let sheets = require('js/sheets');
+let utils = require('js/utils');
+let ui = require('js/ui');
+let init = require('js/init');
+
+// App setup - state globals
 let cardData = {
     titles: [],
     items: [],
@@ -47,183 +46,19 @@ let appData = {
     selectedCard: null
 }
 
+let masterSheetUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + appData.googleSheetId + '/values/Sheet1?key=' + appData.googleSheetApiKey;
+
+// Main
 $( document ).ready(function() {
 
     ui.showLoader();
     ui.showLogin();
 
-    // Process Login button
-    $('#button-login').click(function(e){
-        e.preventDefault();
-        let username = $('#whitespacer-username').val();
-        username = username.toLowerCase();
-        let password = $('#whitespacer-password').val();
-        let credential = appData.credentials[username];
-        if ( credential && credential.password.toLowerCase() == password.toLowerCase()){
-            $('.password-warning').hide();
-            $(this).addClass('is-loading');
-            loadDataSheet(credential.sheet_id, appData.googleSheetApiKey, cardData);
-        } else {
-            $('.password-warning').fadeTo(0, 0.0, function() {
-                $(this).fadeTo(500, 1.0);
-            });
-        }
-    })
+    //modals
+    init.loginModal(appData, cardData);
+    init.infoModal();
 
-    // Load google spreadsheet data
-
-    let sheetUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + appData.googleSheetId + '/values/Sheet1?key=' + appData.googleSheetApiKey;
-
-    // load master sheet
-    $.ajax({
-        url: sheetUrl,
-        dataType:"jsonp",
-        success: function(results){
-            appData.credentials = sheets.parseMaster(results);
-            // console.log(results);
-            // console.log(appData.credentials);
-            ui.hideLoader();
-            $('#preload').hide();
-
-            // disable login for testing
-            //
-            // loadDataSheet(appData.credentials.norway2018.sheet_id, appData.googleSheetApiKey, cardData)
-        },
-        error: function(xhr, status, error) {
-            var err = eval("(" + xhr.responseText + ")");
-            alert(err.Message);
-        }
-    })
-
-    $('.icon-info').click(function(){
-        ui.showInfo();
-    });
-
-    $('#info .modal-close').click(ui.hideInfo);
-    $('#info .modal-background').click(ui.hideInfo);
-
-    function loadDataSheet(sheetId, apiKey, cardData){
-        let sheetUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetId + '/values/Sheet1?key=' + apiKey;
-        $.ajax({
-            url: sheetUrl,
-            dataType:"jsonp",
-            success:function(results) {
-                ui.hideLogin();
-                // console.log(results);
-                cardData = sheets.processResults(results, cardData)
-                // console.log(cardData);
-                initCards(cardData);
-                initModal(cardData);
-                initNavbar(cardData);
-                initCarousel();
-            },
-            error: function(xhr, status, error) {
-                var err = eval("(" + xhr.responseText + ")");
-                alert(err.Message);
-            }
-        });
-    }
-
-
-    // Setup cards
-    function initCards(cardData){
-        let titles = utils.getRandomTitles(5, cardData);
-        // grab 5 categories and create card
-        for(let i=0;i<5;i++){
-            let title = titles[i];
-            let $card = generateCard(title, i);
-            $('#content').append($card);
-        }
-    }
-
-    function initNavbar(cardData){
-        $('.trigger-randomize').click(function(){
-            utils.randomizeTitles(cardData);
-        });
-    }
-
-    function initCarousel(){
-        // init carousel
-        $('.main-carousel').flickity({
-            // options
-            cellAlign: 'center',
-            contain: true,
-            dragThreshold: 10,
-            pageDots: false
-        });
-    }
-
-    function initModal(cardData){
-        let $target = $('#title-overlay .options-container');
-
-        for(let i = 0; i < cardData.titles.length; i++){
-            let title = cardData.titles[i];
-            let $title = $('<div class="selection-box"><h2 class="title-selector">' + title + '</h2></div>');
-            // let $title = $('<h2 class="title-selector">' + title + '</h2>');
-
-
-            $title.click(function(){
-                let $oldCard = $('.ws-card[data-card-id="' + appData.selectedCard + '"]');
-                let $newCard = generateCard($(this).find('.title-selector').html(), appData.selectedCard);
-                $oldCard.find('.main-carousel').flickity('destroy');
-                $oldCard.replaceWith($newCard);
-                $newCard.find('.main-carousel').flickity({
-                    // options
-                    cellAlign: 'center',
-                    contain: true,
-                    dragThreshold: 10,
-                    pageDots: false
-                });
-                ui.hideModal();
-                $newCard.fadeTo(0, 0.0, function() {
-                    $(this).fadeTo(500, 1.0);
-                });
-            });
-
-            $target.append($title);
-        }
-
-        $('#title-overlay .close-icon').click(function(){
-            ui.hideModal();
-        })
-
-        ui.hideModal();
-
-    }
-
-    function generateCard(title, cardId){
-        let colIndex = cardData.titles.indexOf(title);
-        let [bgColor, fgColor] = cardData.colors[colIndex];
-        let $card = $('<div class="ws-card"></div>');
-        $card.css('background-color', bgColor);
-        $card.css('color', fgColor);
-        $card.attr('data-card-id', cardId);
-        $card.attr('data-col-index', colIndex);
-
-        let $title = $('<h1 class="card-title">' + title + '</h1>');
-        $card.append($title);
-
-        let $container = $('<div class="main-carousel"></div>');
-        for (let i=0; i < cardData.items[colIndex].length; i++){
-            let title = cardData.items[colIndex][i];
-            let $slide = $('<div class="carousel-cell"></div>');
-            let $item = $('<h2>' + title + '</h2>');
-            utils.textResize($item);
-            $slide.append($item);
-            $container.append($slide);
-        }
-        $card.append($container);
-
-
-        $title.click(function(){
-            appData.selectedCard = $(this).parent('.ws-card').data('card-id');
-            ui.showModal();
-        });
-
-        // each card must have all titles loaded as carousel
-
-
-        return $card;
-    }
+    //load master sheet and remove loading icon from submit button when ready
+    init.masterSheet(masterSheetUrl, appData);
 
 });

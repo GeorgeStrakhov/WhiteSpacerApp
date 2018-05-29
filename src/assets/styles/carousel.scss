@@ -1,8 +1,33 @@
 /* prevent vertical scroll bar glitch */
-html { overflow-y: scroll; }
 
 .carousel {
     background: #EEE;
+}
+
+// Main container that holds the carousel objects
+.ws-card {
+    background-color: white;
+    border-top: 2px solid white;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    height: 16vh;
+
+    h1 {
+        font-size: 1em;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        padding-left: 10px;
+        margin: none;
+        text-transform: lowercase;
+        font-weight: 800;
+        z-index: 1;
+        // border: 1px solid red;
+    }
+
 }
 
 .main-carousel {
@@ -46,6 +71,17 @@ html { overflow-y: scroll; }
             font-size: 2em;
         }
 
+    }
+}
+
+.title-selector {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    h2 {
+        display: flex;
+        flex-direction: column;
     }
 }
 

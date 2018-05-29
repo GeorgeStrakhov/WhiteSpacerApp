@@ -1,0 +1,23 @@
+#title-overlay {
+    .options-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .selection-box{
+        }
+        h2 {
+            padding-right: 30px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            color: white;
+            text-align: right;
+            font-size: 1.3em;
+            font-weight: 800;
+
+        }
+        h2:hover {
+            color: magenta;
+            cursor: pointer;
+        }
+    }
+}

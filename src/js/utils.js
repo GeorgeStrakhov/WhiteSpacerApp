@@ -1,4 +1,5 @@
 let $ = require('jquery');
+let ui = require('js/ui');
 let utils = {
 
     // returns a random element given array. if second paramater is passed, will filter
@@ -18,45 +19,6 @@ let utils = {
         return result;
     },
 
-    isImageUrl(urlString){
-        let regex1 = RegExp(/(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i);
-        return regex1.test(urlString);
-    },
-
-    randomItem($parent, cardData){
-        let colIndex = $parent.data('col-index');
-        let blackList = [];
-        $parent.find('h2').each( function(){
-            blackList.push($(this).html());
-        });
-        return this.randomElement(cardData.items[colIndex], blackList);
-    },
-
-    alreadyExists($card, item, cardData){
-        let itemArray = [];
-        $card.find('h2').each( function(){
-            itemArray.push($(this).html());
-        });
-        if (itemArray.indexOf(item) != -1) {
-            return true;
-        }
-        return false;
-    },
-
-    itemClickBehaviour($item, cardData){
-        let $parent = $item.parent('.ws-card');
-        let newItem = utils.randomItem($parent, cardData);
-
-        // reuturn if no item can be added (no unused items)
-        if (!newItem){
-            console.log('no additional options available');
-            return;
-        } else {
-            $item.html(newItem);
-            this.textResize($item);
-        }
-    },
-
     // return an array of x titles
     getRandomTitles(num, cardData){
         let results = [];
@@ -66,10 +28,7 @@ let utils = {
         return results;
     },
 
-    addTitleOptions($parent, cardData){
-
-    },
-
+    // Resize text based on number of characters. Needs to be complemented with media queries
     textResize($target){
         let content = $target.html();
         $target.removeClass('small-title');
@@ -83,6 +42,7 @@ let utils = {
         }
     },
 
+    // Randomizes all currently display bands
     randomizeTitles(cardData){
         $('.ws-card').each(function(){
             let $carousel = $(this).find('.main-carousel');
@@ -95,6 +55,39 @@ let utils = {
             }
         })
 
+    },
+
+    generateCard(appData, cardData, title, cardId){
+        let colIndex = cardData.titles.indexOf(title);
+        let [bgColor, fgColor] = cardData.colors[colIndex];
+        let $card = $('<div class="ws-card"></div>');
+        $card.css('background-color', bgColor);
+        $card.css('color', fgColor);
+        $card.attr('data-card-id', cardId);
+        $card.attr('data-col-index', colIndex);
+
+        let $title = $('<h1 class="card-title">' + title + '</h1>');
+        $card.append($title);
+
+        let $container = $('<div class="main-carousel"></div>');
+        for (let i=0; i < cardData.items[colIndex].length; i++){
+            let title = cardData.items[colIndex][i];
+            let $slide = $('<div class="carousel-cell"></div>');
+            let $item = $('<h2>' + title + '</h2>');
+            utils.textResize($item);
+            $slide.append($item);
+            $container.append($slide);
+        }
+        $card.append($container);
+
+
+        $title.click(function(){
+            appData.selectedCard = $(this).parent('.ws-card').data('card-id');
+            ui.showModal();
+        });
+
+        // each card must have all titles loaded as carousel
+        return $card;
     }
 }
 

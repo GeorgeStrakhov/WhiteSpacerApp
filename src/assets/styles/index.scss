@@ -1,10 +1,15 @@
 @import "bulma";
+@import "carousel";
+@import "info-modal";
+@import "login-modal";
+@import "menu-modal";
 
 html {
     box-sizing: border-box;
     background-color: #ffffff;
     color: #222222;
     font-family: helvetica;
+    overflow-y: scroll;
 }
 *, *:before, *:after {
     box-sizing: inherit;
@@ -16,47 +21,16 @@ body {
     /* Disables pull-to-refresh but allows overscroll glow effects. */
     overscroll-behavior-y: contain;
 }
+
 #content-parent {
     padding: 0px;
 }
 
 #content {
-    // display: flex;
-    // flex-direction: column;
-    // height: 100vh;
-}
-#title-overlay {
-    // position: fixed; /* Stay in place */
-    // left: 0;
-    // top: 0;
-    // width: 100%; /* Full width */
-    // height: 100%; /* Full height */
-    // overflow: auto; /* Enable scroll if needed */
-    // background-color: rgb(0,0,0); /* Fallback color */
-    // background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
-    .options-container{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        .selection-box{
-        }
-        h2 {
-            padding-right: 30px;
-            padding-top: 12px;
-            padding-bottom: 12px;
-            color: white;
-            text-align: right;
-            font-size: 1.3em;
-            font-weight: 800;
 
-        }
-        h2:hover {
-            color: magenta;
-            cursor: pointer;
-        }
-    }
 }
 
+// Navigation
 .ws-navbar {
     display: flex;
     flex-direction: row;
@@ -67,41 +41,6 @@ body {
     font-size: 1em;
     padding: 0 20px;
 }
-.ws-card {
-    background-color: white;
-    border-top: 2px solid white;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-    height: 16vh;
-
-    h1 {
-        font-size: 1em;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        padding-left: 10px;
-        margin: none;
-        text-transform: lowercase;
-        font-weight: 800;
-        z-index: 1;
-        // border: 1px solid red;
-    }
-
-}
-
-.title-selector {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    h2 {
-        display: flex;
-        flex-direction: column;
-    }
-}
 
 h2 {
     text-align: center;
@@ -109,17 +48,6 @@ h2 {
     letter-spacing: -0.03em;
     line-height: 0.85em;
     user-select: none;
-}
-
-
-.close-icon {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    z-index: 1;
 }
 
 .icon-logo, .icon-info, .icon-share {
@@ -146,41 +74,17 @@ h2 {
 
 }
 
-.icon-logo:hover, .icon-info:hover {
-    cursor: pointer;
+.close-icon {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 1;
 }
 
-#info {
-    .modal-background {
-        // background-color: rgba(255,255,255,0.9);
-        background-color: white;
-    }
-    .modal-content {
-        text-align: center;
-        justify-content: center;
-        h1 {
-            color: #222222;
-            font-size: 2em;
-            font-weight: 800;
-            letter-spacing: -0.05em;
-            line-height: 1em;
-        }
-
-        .info-title {
-            color: #222222;
-            font-size: 1.8em;
-            font-weight: 800;
-            letter-spacing: -0.04em;
-        }
-        .subtitle {
-            color: #AAAAAA;
-            font-size: 1.2em;
-            letter-spacing: -0.04em;
-            font-weight: 800;
-            margin-top: -0.4em;
-            margin-bottom: 1.6em;
-        }
-    }
+.icon-logo:hover, .icon-info:hover {
+    cursor: pointer;
 }
 
 .is-horizontal-center {

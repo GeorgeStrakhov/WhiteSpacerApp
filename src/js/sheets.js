@@ -1,7 +1,6 @@
 let sheets = {
 
-
-    // The callback function the JSONP request will execute to load data from API
+    // Extract titles row (first) and data rows (subsequent)
     processResults(results, cardData) {
 
         // extract titles from first row
@@ -23,6 +22,7 @@ let sheets = {
         return cardData;
     },
 
+    // Extract username, password, and spreadsheet ket from master sheet
     parseMaster(results, appData) {
         let output = {};
         let keys = results.values[0];

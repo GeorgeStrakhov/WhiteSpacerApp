@@ -7,26 +7,11 @@ module.exports = merge(webpackConfig, {
 
     devtool: 'source-map',
 
-    // output: {
-    //     path: path.join(__dirname, '/'),
-    //     filename: '[name].[chunkhash].js'
-    //
-    //
-    // },
-
-    // output: {
-    //     path: path.resolve('./build'),
-    //     publicPath: './build/',
-    //     filename: '[name].[chunkhash].js'
-    // },
-
     output: {
         path: path.join(__dirname, '/'),
-        filename: '[name].[chunkhash].js'
-    },
+        // filename: '[name].[chunkhash].js'
+        filename: '[name].js'
 
-    // plugins: [
-    //     new CleanWebpackPlugin(['/'])
-    // ]
+    },
 
 });
