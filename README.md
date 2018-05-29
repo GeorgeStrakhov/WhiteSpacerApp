@@ -34,4 +34,4 @@ https://docs.google.com/spreadsheets/d/1hTI-U494zBBubcBcSCw66cnHz81p0zz__DfQ0oOs
 * Minimum of 5 columns
 * First row contains titles
 
-Other than the above, there are no other restrictions. Add multiple columns and title will be dynamically read.
+Other than the above, there are no other restrictions. Titles will be read dynamically from the sheet.
