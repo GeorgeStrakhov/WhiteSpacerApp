@@ -9,14 +9,14 @@ let init = {
         // Process Login button
         $('#button-login').click(function(e){
             e.preventDefault();
-            let username = $('#whitespacer-username').val();
-            username = username.toLowerCase();
+            let login = $('#whitespacer-login').val();
+            login = login.toLowerCase();
             let password = $('#whitespacer-password').val();
-            let credential = appData.credentials[username];
+            let credential = appData.credentials[login];
             if ( credential && credential.password.toLowerCase() == password.toLowerCase()){
                 $('.password-warning').hide();
                 $(this).addClass('is-loading');
-                init.dataSheet(credential.sheet_id, appData.googleSheetApiKey, appData, cardData);
+                init.dataSheet(credential, appData.googleSheetApiKey, appData, cardData);
             } else {
                 $('.password-warning').fadeTo(0, 0.0, function() {
                     $(this).fadeTo(500, 1.0);
@@ -45,7 +45,15 @@ let init = {
         });
     },
 
-    dataSheet(sheetId, apiKey, appData, cardData){
+    dataSheet(credential, apiKey, appData, cardData){
+        if(!credential) {
+          utils.displayError('Sorry, something is wrong with this data set.');
+        }
+        let sheetId = utils.sheetIdFromLink(credential.spreadsheet_link);
+        if(!sheetId) {
+          utils.displayError('Sorry, something is wrong with this data set.');
+        }
+
         let sheetUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetId + '/values/Sheet1?key=' + apiKey;
         $.ajax({
             url: sheetUrl,
@@ -53,8 +61,8 @@ let init = {
             success:function(results) {
                 ui.hideLogin();
                 cardData = sheets.processResults(results, cardData)
-                // console.log(results);
-                // console.log(cardData);
+                //console.log(results);
+                //console.log(cardData);
 
                 // After we have the data, setup the main views of the app
                 init.cards(appData, cardData);

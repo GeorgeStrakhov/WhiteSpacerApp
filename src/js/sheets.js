@@ -22,23 +22,23 @@ let sheets = {
         return cardData;
     },
 
-    // Extract username, password, and spreadsheet ket from master sheet
+    // Extract login, password, and spreadsheet key from master sheet
     parseMaster(results, appData) {
         let output = {};
         let keys = results.values[0];
-        let usernameIndex = keys.indexOf('username');
+        let loginIndex = keys.indexOf('login');
 
         // for each row except first
         for (let y = 1; y < results.values.length; y++) {
             let item = results.values[y];
-            let username = item[usernameIndex].toLowerCase();
+            let login = item[loginIndex].toLowerCase();
             let result = {};
-            if (username){
+            if (login){
                 for( i = 0; i < results.values[0].length; i++ ){
                     var key = results.values[0][i]
                     result[key] = item[keys.indexOf(key)];
                 }
-                output[username] = result;
+                output[login] = result;
             }
         }
         return output;

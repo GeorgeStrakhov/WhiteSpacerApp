@@ -2,6 +2,25 @@ let $ = require('jquery');
 let ui = require('js/ui');
 let utils = {
 
+    //display an error
+    displayError(message, shouldReload = true) {
+      alert(message);
+      if(shouldReload) {
+        window.location.reload();
+      }
+    },
+
+    //extracts sheet id from the full spreadsheets link
+    sheetIdFromLink(url) {
+      let sheetId = '0';
+      try {
+        sheetId = new RegExp("/spreadsheets/d/([a-zA-Z0-9-_]+)").exec(url)[1];
+      } catch (err) {
+        utils.displayError('Sorry, something wrong with the data sheet URL');
+      }
+      return sheetId;
+    },
+
     // returns a random element given array. if second paramater is passed, will filter
     randomElement(options, blackList=[]){
         let result = options[Math.floor(Math.random() * options.length)];

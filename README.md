@@ -16,7 +16,7 @@ Creates index.html and javascript in root directory
 `npm run build`
 
 ## Deployment
-Push to master to deploy (gh-pages)
+Push to master to deploy
 
 ## Data sheets
 System requires a Google Sheets API key - hardcoded in /src/js/index.js
@@ -25,9 +25,11 @@ System requires a Google Sheets API key - hardcoded in /src/js/index.js
 
 #### Master Sheet
 There is one hardcoded sheet that contains the username, passwords, and workshop sheet id:
-https://docs.google.com/spreadsheets/d/1YAvN5y4QU9q37-z2KpI88lOFTKwLQd8aACNCnPW7JOs/edit#gid=0
+https://docs.google.com/spreadsheets/d/1mul_4AtldUV6AzDLfQGwvT7mCbeeABwciqCAxKBwwOk/edit?usp=sharing
+To change the master sheet - edit /src/js/config.js
 
-This is currently editable by G.S. If changed, /src/js/index.js file will need to be updated with the new sheet id.
+New data sets can be added by filling in this form:
+https://docs.google.com/forms/d/e/1FAIpQLSfTj9yQQz9iJmwLbp8dcNc9X_9heZ7Yhg_jUqSAQPfAA8uHfQ/viewform
 
 #### Data Sheet Sample
 https://docs.google.com/spreadsheets/d/1hTI-U494zBBubcBcSCw66cnHz81p0zz__DfQ0oOsaDk/edit#gid=0
