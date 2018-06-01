@@ -54,7 +54,7 @@ h2 {
     display: flex;
     width: 50px;
     height: 50px;
-    background-image: url("../images/logo.png");
+    background-image: url("../images/logo-small.png");
     background-size: cover;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -63,8 +63,7 @@ h2 {
 .icon-info {
     width: 32px;
     height: 32px;
-    background-image: url("../images/info.png");
-
+    background-image: url("../images/help.png");
 }
 
 .icon-share {
