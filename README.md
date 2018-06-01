@@ -9,6 +9,7 @@ This app uses the Webpack 4 build tool.
 ### Development
 Run a development server with live reload
 `npm run dev`
+Open browser at http://localhost:8080
 
 ### Build
 Creates index.html and javascript in root directory
