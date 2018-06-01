@@ -3,6 +3,7 @@
  */
 import 'flickity/css/flickity.css';
 import 'styles/index.scss';
+let config = require('./config');
 
 
 let $ = require('jquery');
@@ -40,8 +41,8 @@ let cardData = {
 };
 
 let appData = {
-    googleSheetId: '1YAvN5y4QU9q37-z2KpI88lOFTKwLQd8aACNCnPW7JOs',
-    googleSheetApiKey: 'AIzaSyAygoc3sxpd7gAEndLz3l4WEpg1SOFgAyw',
+    googleSheetId: config.googleSheetId,
+    googleSheetApiKey: config.googleSheetApiKey,
     credentials: {},
     selectedCard: null
 }
