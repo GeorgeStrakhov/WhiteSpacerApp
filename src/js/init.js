@@ -96,6 +96,9 @@ let init = {
     // Setup cards
     cards(appData, cardData){
         let titles = utils.getRandomTitles(5, cardData);
+        if (config.titlesOrder == 'ordered') {
+          titles = utils.getOrderedTitles(5, cardData);
+        }
         // grab 5 categories and create card
         for(let i=0;i<5;i++){
             let title = titles[i];

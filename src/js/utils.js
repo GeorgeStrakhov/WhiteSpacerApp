@@ -45,13 +45,18 @@ let utils = {
         return result;
     },
 
-    // return an array of x titles
+    // return a random array of x titles
     getRandomTitles(num, cardData){
         let results = [];
         for (let i = 0; i < num; i++){
             results.push(this.randomElement(cardData.titles, results));
         }
         return results;
+    },
+
+    // return an ordered array of x titles (first x titles)
+    getOrderedTitles(num, cardData){
+        return cardData.titles.slice(0,num);
     },
 
     // Resize text based on number of characters. Needs to be complemented with media queries
