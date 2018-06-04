@@ -60,6 +60,6 @@ $( document ).ready(function() {
     init.infoModal();
 
     //load master sheet and remove loading icon from submit button when ready
-    init.masterSheet(masterSheetUrl, appData);
+    init.masterSheet(masterSheetUrl, appData, cardData);
 
 });

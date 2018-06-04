@@ -2,6 +2,7 @@ let $ = require('jquery');
 let sheets = require('js/sheets');
 let utils = require('js/utils');
 let ui = require('js/ui');
+let config = require('js/config');
 
 let init = {
 
@@ -25,7 +26,7 @@ let init = {
         })
     },
 
-    masterSheet(sheetUrl, appData){
+    masterSheet(sheetUrl, appData, cardData){
         // load master sheet
         $.ajax({
             url: sheetUrl,
@@ -35,8 +36,13 @@ let init = {
                 ui.hideLoader();
                 $('#preload').hide();
 
-                // uncomment next line to skip login for testing
-                // loadDataSheet(appData.credentials.norway2018.sheet_id, appData.googleSheetApiKey, cardData)
+                //TESTING MODE SWITCH
+                if(config.isTesting) { //bypass login screen for testing
+                  console.log('NB! we are in testing mode!');
+                  console.log(appData.credentials);
+                  init.dataSheet(config.testCredentials, appData.googleSheetApiKey, appData, cardData);
+                }
+
             },
             error: function(xhr, status, error) {
                 var err = eval("(" + xhr.responseText + ")");

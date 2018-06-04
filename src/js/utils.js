@@ -1,9 +1,16 @@
 let $ = require('jquery');
 let ui = require('js/ui');
+let config = require('js/config');
 let utils = {
 
     //display an error
     displayError(message, shouldReload = true) {
+      if(config.isTesting) {
+        console.log('error occured!');
+        console.log(message);
+        return;
+      }
+
       alert(message);
       if(shouldReload) {
         window.location.reload();
